@@ -1,0 +1,21 @@
+openssl genrsa -des3 -out root-ca.key 1024
+openssl req -new -x509 -days 3650 -key root-ca.key -out root-ca.crt -config openssl.cnf
+
+perl mk_new_ca_dir.pl CondorSigningCA1
+cp root-ca.crt CondorSigningCA1/signing-ca-1.crt
+cp root-ca.key CondorSigningCA1/signing-ca-1.key
+
+openssl req -newkey rsa:1024 -keyout server.key -config openssl.cnf -out server.req
+openssl ca -config openssl.cnf -out server.crt -infiles server.req
+
+openssl req -newkey rsa:1024 -keyout rohan.key -config openssl.cnf -out rohan.req
+openssl ca -config openssl.cnf -out rohan.crt -infiles rohan.req
+
+openssl req -newkey rsa:1024 -keyout delegate.key -config openssl.cnf -out delegate.req
+openssl ca -config openssl.cnf -out delegate.crt -infiles delegate.req
+
+openssl req -newkey rsa:1024 -keyout revoke.key -config openssl.cnf -out revoke.req
+openssl ca -config openssl.cnf -out revoke.crt -infiles revoke.req
+
+openssl ca -gencrl -keyfile CondorSigningCA1/signing-ca-1.key -cert CondorSigningCA1/signing-ca-1.crt -out my_crl.pem -config openssl.cnf 
+openssl ca -revoke revoke.crt -keyfile CondorSigningCA1/signing-ca-1.key -cert CondorSigningCA1/signing-ca-1.crt -config openssl.cnf

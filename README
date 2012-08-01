@@ -1,0 +1,32 @@
+Compiling:
+make all
+
+Run:
+For Server:
+To run a regular server: ./wserver cert-file priv-key-file pub-key-file
+To run server after it's certificate is revoked, add old private key to re-crypt the files: ./wserver cert-file priv-key-file pub-key-file old-priv-key-file
+
+Server will ask for password of each private-key file provided
+
+For CA:
+./makecert common_name dest-priv-key-file-name dest-cert-file-name
+
+For Client:
+./wclient cert-file key-file
+
+Client will ask for password of private-key file provided
+
+Client can then use the following commands:
+
+START - Start a session with the server
+
+PUT filename - Store file with filename at server
+
+GET filename - Fetch file with filename from server
+
+DELEGATE filename username time_in_seconds - Delegate file with filename for read-write access to user with username for time time_in_seconds
+
+DELEGATE* filename username time_in_seconds - Delegate file with filename for read-write and delegate access to user with username for time time_in_seconds
+
+END - End current session
+

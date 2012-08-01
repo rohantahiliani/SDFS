@@ -1,0 +1,620 @@
+Flawfinder version 1.27, (C) 2001-2004 David A. Wheeler.
+Number of dangerous functions in C/C++ ruleset: 160
+Examining /home/rohan/Documents/6238/Project2/src/read_write.h
+Examining /home/rohan/Documents/6238/Project2/src/mkcert.c
+Examining /home/rohan/Documents/6238/Project2/src/server.h
+Examining /home/rohan/Documents/6238/Project2/src/client.h
+Examining /home/rohan/Documents/6238/Project2/src/client.c
+Examining /home/rohan/Documents/6238/Project2/src/read_write.c
+Examining /home/rohan/Documents/6238/Project2/src/common.c
+Examining /home/rohan/Documents/6238/Project2/src/common.h
+Examining /home/rohan/Documents/6238/Project2/src/wclient.c
+Examining /home/rohan/Documents/6238/Project2/src/wserver.c
+Examining /home/rohan/Documents/6238/Project2/src/server.c
+/home/rohan/Documents/6238/Project2/src/client.c:85:  [4] (buffer) strcat:
+  Does not check for buffer overflows when concatenating to destination.
+  Consider using strncat or strlcat (warning, strncat is easily misused). 
+				strcat(temp, response);
+/home/rohan/Documents/6238/Project2/src/client.c:88:  [4] (buffer) strcat:
+  Does not check for buffer overflows when concatenating to destination.
+  Consider using strncat or strlcat (warning, strncat is easily misused). 
+				strcat(response, temp);
+/home/rohan/Documents/6238/Project2/src/client.c:91:  [4] (buffer) strcat:
+  Does not check for buffer overflows when concatenating to destination.
+  Consider using strncat or strlcat (warning, strncat is easily misused). 
+			strcat(response, buf);
+/home/rohan/Documents/6238/Project2/src/client.c:99:  [4] (buffer) strcpy:
+  Does not check for buffer overflows when copying to destination.
+  Consider using strncpy or strlcpy (warning, strncpy is easily misused). 
+	strcpy(*ret_array, response);
+/home/rohan/Documents/6238/Project2/src/common.c:30:  [4] (buffer) strcpy:
+  Does not check for buffer overflows when copying to destination.
+  Consider using strncpy or strlcpy (warning, strncpy is easily misused). 
+    strcpy(buf,pass);
+/home/rohan/Documents/6238/Project2/src/common.c:94:  [4] (buffer) strcpy:
+  Does not check for buffer overflows when copying to destination.
+  Consider using strncpy or strlcpy (warning, strncpy is easily misused). 
+	strcpy(*owner, peer_CN);
+/home/rohan/Documents/6238/Project2/src/common.c:114:  [4] (buffer) sscanf:
+  The scanf() family's %s operation, without a limit specification,
+  permits buffer overflows. Specify a limit to %s, or use a different input
+  function. 
+			sscanf(line, "%c %s %d %s %s", &status, crap_val, &serial, unknown, info);
+/home/rohan/Documents/6238/Project2/src/common.c:118:  [4] (buffer) sscanf:
+  The scanf() family's %s operation, without a limit specification,
+  permits buffer overflows. Specify a limit to %s, or use a different input
+  function. 
+			sscanf(line, "%c %s %s %d %s %s", &status, crap_val, crap_val2, &serial, unknown, info); 
+/home/rohan/Documents/6238/Project2/src/mkcert.c:99:  [4] (buffer) scanf:
+  The scanf() family's %s operation, without a limit specification,
+  permits buffer overflows. Specify a limit to %s, or use a different input
+  function. 
+	printf("Enter Country: "); scanf("%s",response);
+/home/rohan/Documents/6238/Project2/src/mkcert.c:101:  [4] (buffer) scanf:
+  The scanf() family's %s operation, without a limit specification,
+  permits buffer overflows. Specify a limit to %s, or use a different input
+  function. 
+	printf("Enter State: "); memset(response, 0, 512); scanf("%s",response);
+/home/rohan/Documents/6238/Project2/src/mkcert.c:103:  [4] (buffer) scanf:
+  The scanf() family's %s operation, without a limit specification,
+  permits buffer overflows. Specify a limit to %s, or use a different input
+  function. 
+	printf("Enter City: "); memset(response, 0, 512); scanf("%s",response);
+/home/rohan/Documents/6238/Project2/src/mkcert.c:105:  [4] (buffer) scanf:
+  The scanf() family's %s operation, without a limit specification,
+  permits buffer overflows. Specify a limit to %s, or use a different input
+  function. 
+	printf("Enter Organization: "); memset(response, 0, 512); scanf("%s",response);
+/home/rohan/Documents/6238/Project2/src/server.c:75:  [4] (buffer) strcat:
+  Does not check for buffer overflows when concatenating to destination.
+  Consider using strncat or strlcat (warning, strncat is easily misused). 
+		strcat(*result, hex_print);
+/home/rohan/Documents/6238/Project2/src/server.c:167:  [4] (buffer) strcat:
+  Does not check for buffer overflows when concatenating to destination.
+  Consider using strncat or strlcat (warning, strncat is easily misused). 
+			strcat(path,ent->d_name);
+/home/rohan/Documents/6238/Project2/src/server.c:175:  [4] (buffer) sscanf:
+  The scanf() family's %s operation, without a limit specification,
+  permits buffer overflows. Specify a limit to %s, or use a different input
+  function. 
+			sscanf(data, "%s", key);
+/home/rohan/Documents/6238/Project2/src/server.c:195:  [4] (buffer) strcat:
+  Does not check for buffer overflows when concatenating to destination.
+  Consider using strncat or strlcat (warning, strncat is easily misused). 
+				strcat((char*)result_key, hex_print);
+/home/rohan/Documents/6238/Project2/src/server.c:224:  [4] (buffer) strcat:
+  Does not check for buffer overflows when concatenating to destination.
+  Consider using strncat or strlcat (warning, strncat is easily misused). 
+	strcat(path,file_name);
+/home/rohan/Documents/6238/Project2/src/server.c:243:  [4] (buffer) sscanf:
+  The scanf() family's %s operation, without a limit specification,
+  permits buffer overflows. Specify a limit to %s, or use a different input
+  function. 
+			sscanf(data, "%s %d %d %ld", subject, &perm_read, &is_owner, &time_allowed);
+/home/rohan/Documents/6238/Project2/src/server.c:276:  [4] (buffer) strcat:
+  Does not check for buffer overflows when concatenating to destination.
+  Consider using strncat or strlcat (warning, strncat is easily misused). 
+	strcat(path, file_name);
+/home/rohan/Documents/6238/Project2/src/server.c:307:  [4] (buffer) sscanf:
+  The scanf() family's %s operation, without a limit specification,
+  permits buffer overflows. Specify a limit to %s, or use a different input
+  function. 
+	if(sscanf(&buf[is_dstar], "%s %s %ld", file_name, user, &time_allowed) == 3){
+/home/rohan/Documents/6238/Project2/src/server.c:322:  [4] (buffer) strcat:
+  Does not check for buffer overflows when concatenating to destination.
+  Consider using strncat or strlcat (warning, strncat is easily misused). 
+			strcat(permission, time_str);
+/home/rohan/Documents/6238/Project2/src/server.c:429:  [4] (buffer) strcat:
+  Does not check for buffer overflows when concatenating to destination.
+  Consider using strncat or strlcat (warning, strncat is easily misused). 
+		strcat(path, file_name);
+/home/rohan/Documents/6238/Project2/src/server.c:441:  [4] (buffer) strcat:
+  Does not check for buffer overflows when concatenating to destination.
+  Consider using strncat or strlcat (warning, strncat is easily misused). 
+					strcat(temp, response);
+/home/rohan/Documents/6238/Project2/src/server.c:444:  [4] (buffer) strcat:
+  Does not check for buffer overflows when concatenating to destination.
+  Consider using strncat or strlcat (warning, strncat is easily misused). 
+					strcat(response, temp);
+/home/rohan/Documents/6238/Project2/src/server.c:447:  [4] (buffer) strcat:
+  Does not check for buffer overflows when concatenating to destination.
+  Consider using strncat or strlcat (warning, strncat is easily misused). 
+				strcat(response, buf);
+/home/rohan/Documents/6238/Project2/src/server.c:471:  [4] (buffer) strcat:
+  Does not check for buffer overflows when concatenating to destination.
+  Consider using strncat or strlcat (warning, strncat is easily misused). 
+			strcat(hash_result, hex_print);
+/home/rohan/Documents/6238/Project2/src/server.c:519:  [4] (buffer) strcat:
+  Does not check for buffer overflows when concatenating to destination.
+  Consider using strncat or strlcat (warning, strncat is easily misused). 
+	      strcat(command, buf);
+/home/rohan/Documents/6238/Project2/src/wclient.c:21:  [4] (misc) getpass:
+  This function is obsolete and not portable. It was in SUSv2 but
+  removed by POSIX.2.  What it does exactly varies considerably between
+  systems, particularly in where its prompt is displayed and where it gets its
+  data (e.g., /dev/tty, stdin, stderr, etc.). Make the specific calls to
+  do exactly what you want.  If you continue to use it, or write your own,
+  be sure to zero the password as soon as possible to avoid leaving the
+  cleartext password visible in the process' address space. 
+		PASSWORD = getpass(PROMPT);
+/home/rohan/Documents/6238/Project2/src/wclient.c:140:  [4] (buffer) sscanf:
+  The scanf() family's %s operation, without a limit specification,
+  permits buffer overflows. Specify a limit to %s, or use a different input
+  function. 
+				if(sscanf(&command[9], "%s %s %ld", file_name, user, &time_allowed)!=3) {
+/home/rohan/Documents/6238/Project2/src/wserver.c:17:  [4] (misc) getpass:
+  This function is obsolete and not portable. It was in SUSv2 but
+  removed by POSIX.2.  What it does exactly varies considerably between
+  systems, particularly in where its prompt is displayed and where it gets its
+  data (e.g., /dev/tty, stdin, stderr, etc.). Make the specific calls to
+  do exactly what you want.  If you continue to use it, or write your own,
+  be sure to zero the password as soon as possible to avoid leaving the
+  cleartext password visible in the process' address space. 
+			PASSWORD = getpass(PROMPT);
+/home/rohan/Documents/6238/Project2/src/wserver.c:19:  [4] (buffer) strcpy:
+  Does not check for buffer overflows when copying to destination.
+  Consider using strncpy or strlcpy (warning, strncpy is easily misused). 
+			strcpy(OLDPASS, PASSWORD);
+/home/rohan/Documents/6238/Project2/src/wserver.c:22:  [4] (misc) getpass:
+  This function is obsolete and not portable. It was in SUSv2 but
+  removed by POSIX.2.  What it does exactly varies considerably between
+  systems, particularly in where its prompt is displayed and where it gets its
+  data (e.g., /dev/tty, stdin, stderr, etc.). Make the specific calls to
+  do exactly what you want.  If you continue to use it, or write your own,
+  be sure to zero the password as soon as possible to avoid leaving the
+  cleartext password visible in the process' address space. 
+		PASSWORD = getpass(PROMPT);
+/home/rohan/Documents/6238/Project2/src/client.c:59:  [2] (buffer) strcat:
+  Does not check for buffer overflows when concatenating to destination.
+  Consider using strncat or strlcat (warning, strncat is easily misused).
+  Risk is low because the source is a constant string.
+	strcat(command, "\r\n");
+/home/rohan/Documents/6238/Project2/src/common.c:103:  [2] (misc) fopen:
+  Check when opening files - can an attacker redirect it (via symlinks),
+  force the opening of special file type (e.g., device files), move
+  things around to create a race condition, control its ancestors, or change
+  its contents?. 
+	FILE* file = fopen(CRLFILE, "r");
+/home/rohan/Documents/6238/Project2/src/common.c:109:  [2] (buffer) char:
+  Statically-sized arrays can be overflowed. Perform bounds checking,
+  use functions that limit length, or ensure that the size is larger than
+  the maximum possible length. 
+		char unknown[8];
+/home/rohan/Documents/6238/Project2/src/mkcert.c:25:  [2] (misc) fopen:
+  Check when opening files - can an attacker redirect it (via symlinks),
+  force the opening of special file type (e.g., device files), move
+  things around to create a race condition, control its ancestors, or change
+  its contents?. 
+	FILE* file = fopen(argv[2], "w");
+/home/rohan/Documents/6238/Project2/src/mkcert.c:30:  [2] (misc) fopen:
+  Check when opening files - can an attacker redirect it (via symlinks),
+  force the opening of special file type (e.g., device files), move
+  things around to create a race condition, control its ancestors, or change
+  its contents?. 
+	file = fopen(argv[3], "w");
+/home/rohan/Documents/6238/Project2/src/read_write.c:16:  [2] (buffer) char:
+  Statically-sized arrays can be overflowed. Perform bounds checking,
+  use functions that limit length, or ensure that the size is larger than
+  the maximum possible length. 
+    char c2s[BUFSIZZ],s2c[BUFSIZZ];
+/home/rohan/Documents/6238/Project2/src/server.c:62:  [2] (buffer) char:
+  Statically-sized arrays can be overflowed. Perform bounds checking,
+  use functions that limit length, or ensure that the size is larger than
+  the maximum possible length. 
+	unsigned char md_value[EVP_MAX_MD_SIZE];
+/home/rohan/Documents/6238/Project2/src/server.c:73:  [2] (buffer) char:
+  Statically-sized arrays can be overflowed. Perform bounds checking,
+  use functions that limit length, or ensure that the size is larger than
+  the maximum possible length. 
+		char hex_print[2];
+/home/rohan/Documents/6238/Project2/src/server.c:74:  [2] (buffer) sprintf:
+  Does not check for buffer overflows. Use snprintf or vsnprintf. Risk
+  is low because the source has a constant maximum length.
+		sprintf(hex_print, "%02x", md_value[i]);
+/home/rohan/Documents/6238/Project2/src/server.c:83:  [2] (buffer) char:
+  Statically-sized arrays can be overflowed. Perform bounds checking,
+  use functions that limit length, or ensure that the size is larger than
+  the maximum possible length. 
+	unsigned char key[32], iv[32];
+/home/rohan/Documents/6238/Project2/src/server.c:101:  [2] (buffer) char:
+  Statically-sized arrays can be overflowed. Perform bounds checking,
+  use functions that limit length, or ensure that the size is larger than
+  the maximum possible length. 
+	unsigned char key[32], iv[32];
+/home/rohan/Documents/6238/Project2/src/server.c:124:  [2] (misc) fopen:
+  Check when opening files - can an attacker redirect it (via symlinks),
+  force the opening of special file type (e.g., device files), move
+  things around to create a race condition, control its ancestors, or change
+  its contents?. 
+		file = fopen(key, "r");
+/home/rohan/Documents/6238/Project2/src/server.c:140:  [2] (misc) fopen:
+  Check when opening files - can an attacker redirect it (via symlinks),
+  force the opening of special file type (e.g., device files), move
+  things around to create a race condition, control its ancestors, or change
+  its contents?. 
+		file = fopen(key, "r");
+/home/rohan/Documents/6238/Project2/src/server.c:166:  [2] (buffer) strcat:
+  Does not check for buffer overflows when concatenating to destination.
+  Consider using strncat or strlcat (warning, strncat is easily misused).
+  Risk is low because the source is a constant string.
+			strcat(path, "../FileSystem/metadata/");
+/home/rohan/Documents/6238/Project2/src/server.c:168:  [2] (misc) fopen:
+  Check when opening files - can an attacker redirect it (via symlinks),
+  force the opening of special file type (e.g., device files), move
+  things around to create a race condition, control its ancestors, or change
+  its contents?. 
+			FILE* file = fopen(path, "r");
+/home/rohan/Documents/6238/Project2/src/server.c:193:  [2] (buffer) char:
+  Statically-sized arrays can be overflowed. Perform bounds checking,
+  use functions that limit length, or ensure that the size is larger than
+  the maximum possible length. 
+				char hex_print[2];
+/home/rohan/Documents/6238/Project2/src/server.c:194:  [2] (buffer) sprintf:
+  Does not check for buffer overflows. Use snprintf or vsnprintf. Risk
+  is low because the source has a constant maximum length.
+				sprintf(hex_print, "%02x", rsa_key[i]);
+/home/rohan/Documents/6238/Project2/src/server.c:197:  [2] (misc) fopen:
+  Check when opening files - can an attacker redirect it (via symlinks),
+  force the opening of special file type (e.g., device files), move
+  things around to create a race condition, control its ancestors, or change
+  its contents?. 
+			file=fopen(path,"w");
+/home/rohan/Documents/6238/Project2/src/server.c:223:  [2] (buffer) strcat:
+  Does not check for buffer overflows when concatenating to destination.
+  Consider using strncat or strlcat (warning, strncat is easily misused).
+  Risk is low because the source is a constant string.
+	strcat(path, "../FileSystem/metadata/.");
+/home/rohan/Documents/6238/Project2/src/server.c:225:  [2] (misc) fopen:
+  Check when opening files - can an attacker redirect it (via symlinks),
+  force the opening of special file type (e.g., device files), move
+  things around to create a race condition, control its ancestors, or change
+  its contents?. 
+	FILE *file = fopen(path, "r");
+/home/rohan/Documents/6238/Project2/src/server.c:232:  [2] (misc) fopen:
+  Check when opening files - can an attacker redirect it (via symlinks),
+  force the opening of special file type (e.g., device files), move
+  things around to create a race condition, control its ancestors, or change
+  its contents?. 
+		file = fopen(path,"r");
+/home/rohan/Documents/6238/Project2/src/server.c:275:  [2] (buffer) strcat:
+  Does not check for buffer overflows when concatenating to destination.
+  Consider using strncat or strlcat (warning, strncat is easily misused).
+  Risk is low because the source is a constant string.
+	strcat(path, "../FileSystem/metadata/.");
+/home/rohan/Documents/6238/Project2/src/server.c:277:  [2] (misc) fopen:
+  Check when opening files - can an attacker redirect it (via symlinks),
+  force the opening of special file type (e.g., device files), move
+  things around to create a race condition, control its ancestors, or change
+  its contents?. 
+	FILE *file = fopen(path, "r");
+/home/rohan/Documents/6238/Project2/src/server.c:282:  [2] (misc) fopen:
+  Check when opening files - can an attacker redirect it (via symlinks),
+  force the opening of special file type (e.g., device files), move
+  things around to create a race condition, control its ancestors, or change
+  its contents?. 
+		file = fopen(path, "a");
+/home/rohan/Documents/6238/Project2/src/server.c:319:  [2] (buffer) strcat:
+  Does not check for buffer overflows when concatenating to destination.
+  Consider using strncat or strlcat (warning, strncat is easily misused).
+  Risk is low because the source is a constant string.
+			if(is_dstar == 9) strcat(permission, " 6 0 ");
+/home/rohan/Documents/6238/Project2/src/server.c:320:  [2] (buffer) strcat:
+  Does not check for buffer overflows when concatenating to destination.
+  Consider using strncat or strlcat (warning, strncat is easily misused).
+  Risk is low because the source is a constant string.
+			else strcat(permission, " 3 0 ");
+/home/rohan/Documents/6238/Project2/src/server.c:321:  [2] (buffer) sprintf:
+  Does not check for buffer overflows. Use snprintf or vsnprintf. Risk
+  is low because the source has a constant maximum length.
+			sprintf(time_str, "%ld", (time(0)+time_allowed));
+/home/rohan/Documents/6238/Project2/src/server.c:361:  [2] (buffer) strcat:
+  Does not check for buffer overflows when concatenating to destination.
+  Consider using strncat or strlcat (warning, strncat is easily misused).
+  Risk is low because the source is a constant string.
+		strcat(path, "../FileSystem/files/");
+/home/rohan/Documents/6238/Project2/src/server.c:363:  [2] (misc) fopen:
+  Check when opening files - can an attacker redirect it (via symlinks),
+  force the opening of special file type (e.g., device files), move
+  things around to create a race condition, control its ancestors, or change
+  its contents?. 
+		FILE *file = fopen(path, "r");
+/home/rohan/Documents/6238/Project2/src/server.c:369:  [2] (integer) atoi:
+  Unless checked, the resulting number can exceed the expected range. 
+  If source untrusted, check both minimum and maximum, even if the input
+  had no minus sign (large numbers can roll over into negative number;
+  consider saving to an unsigned value if that is intended). 
+			output = (char*) calloc(1, atoi(data_len));
+/home/rohan/Documents/6238/Project2/src/server.c:370:  [2] (integer) atoi:
+  Unless checked, the resulting number can exceed the expected range. 
+  If source untrusted, check both minimum and maximum, even if the input
+  had no minus sign (large numbers can roll over into negative number;
+  consider saving to an unsigned value if that is intended). 
+			fread(output, atoi(data_len), 1, file);
+/home/rohan/Documents/6238/Project2/src/server.c:384:  [2] (integer) atoi:
+  Unless checked, the resulting number can exceed the expected range. 
+  If source untrusted, check both minimum and maximum, even if the input
+  had no minus sign (large numbers can roll over into negative number;
+  consider saving to an unsigned value if that is intended). 
+			decryptFile(output, ukey, &decrypt_result, atoi(data_len));
+/home/rohan/Documents/6238/Project2/src/server.c:428:  [2] (buffer) strcat:
+  Does not check for buffer overflows when concatenating to destination.
+  Consider using strncat or strlcat (warning, strncat is easily misused).
+  Risk is low because the source is a constant string.
+		strcat(path, "../FileSystem/files/");
+/home/rohan/Documents/6238/Project2/src/server.c:430:  [2] (misc) fopen:
+  Check when opening files - can an attacker redirect it (via symlinks),
+  force the opening of special file type (e.g., device files), move
+  things around to create a race condition, control its ancestors, or change
+  its contents?. 
+		FILE *file = fopen(path, "w");
+/home/rohan/Documents/6238/Project2/src/server.c:461:  [2] (buffer) sprintf:
+  Does not check for buffer overflows. Use snprintf or vsnprintf. Risk
+  is low because the source has a constant maximum length.
+		sprintf(data_len, "%d", enc_len);
+/home/rohan/Documents/6238/Project2/src/server.c:469:  [2] (buffer) char:
+  Statically-sized arrays can be overflowed. Perform bounds checking,
+  use functions that limit length, or ensure that the size is larger than
+  the maximum possible length. 
+			char hex_print[2];
+/home/rohan/Documents/6238/Project2/src/server.c:470:  [2] (buffer) sprintf:
+  Does not check for buffer overflows. Use snprintf or vsnprintf. Risk
+  is low because the source has a constant maximum length.
+			sprintf(hex_print, "%02x", RSA_result[i]);
+/home/rohan/Documents/6238/Project2/src/server.c:506:  [2] (buffer) char:
+  Statically-sized arrays can be overflowed. Perform bounds checking,
+  use functions that limit length, or ensure that the size is larger than
+  the maximum possible length. 
+	char buf[BUFSIZZ];
+/home/rohan/Documents/6238/Project2/src/wclient.c:43:  [2] (buffer) strcpy:
+  Does not check for buffer overflows when copying to destination.
+  Consider using strncpy or strlcpy (warning, strncpy is easily misused). Risk
+  is low because the source is a constant string.
+				strcpy(command, "END");
+/home/rohan/Documents/6238/Project2/src/wclient.c:80:  [2] (misc) fopen:
+  Check when opening files - can an attacker redirect it (via symlinks),
+  force the opening of special file type (e.g., device files), move
+  things around to create a race condition, control its ancestors, or change
+  its contents?. 
+					file = fopen(file_name, "r");
+/home/rohan/Documents/6238/Project2/src/wclient.c:116:  [2] (buffer) strcat:
+  Does not check for buffer overflows when concatenating to destination.
+  Consider using strncat or strlcat (warning, strncat is easily misused).
+  Risk is low because the source is a constant string.
+					strcat(file_name, "files/");
+/home/rohan/Documents/6238/Project2/src/wclient.c:123:  [2] (misc) fopen:
+  Check when opening files - can an attacker redirect it (via symlinks),
+  force the opening of special file type (e.g., device files), move
+  things around to create a race condition, control its ancestors, or change
+  its contents?. 
+					file = fopen(file_name, "w");
+/home/rohan/Documents/6238/Project2/src/wserver.c:31:  [2] (buffer) char:
+  Statically-sized arrays can be overflowed. Perform bounds checking,
+  use functions that limit length, or ensure that the size is larger than
+  the maximum possible length. 
+    char buf[BUFSIZZ];
+/home/rohan/Documents/6238/Project2/src/client.c:60:  [1] (buffer) strlen:
+  Does not handle strings that are not \0-terminated (it could cause a
+  crash if unprotected). 
+    request_len=strlen(command);
+/home/rohan/Documents/6238/Project2/src/client.c:84:  [1] (buffer) strlen:
+  Does not handle strings that are not \0-terminated (it could cause a
+  crash if unprotected). 
+				char* temp = (char*)calloc(1,strlen(response)+1);
+/home/rohan/Documents/6238/Project2/src/client.c:87:  [1] (buffer) strlen:
+  Does not handle strings that are not \0-terminated (it could cause a
+  crash if unprotected). 
+				response = (char*)calloc(1,strlen(temp)+52);
+/home/rohan/Documents/6238/Project2/src/client.c:98:  [1] (buffer) strlen:
+  Does not handle strings that are not \0-terminated (it could cause a
+  crash if unprotected). 
+	*ret_array = (char*) calloc(1, strlen(response)+1);
+/home/rohan/Documents/6238/Project2/src/common.c:27:  [1] (buffer) strlen:
+  Does not handle strings that are not \0-terminated (it could cause a
+  crash if unprotected). 
+    if(num<strlen(pass)+1)
+/home/rohan/Documents/6238/Project2/src/common.c:31:  [1] (buffer) strlen:
+  Does not handle strings that are not \0-terminated (it could cause a
+  crash if unprotected). 
+    return(strlen(pass));
+/home/rohan/Documents/6238/Project2/src/common.c:75:  [1] (buffer) strlen:
+  Does not handle strings that are not \0-terminated (it could cause a
+  crash if unprotected). 
+	int len = strlen(sub);
+/home/rohan/Documents/6238/Project2/src/common.c:121:  [1] (buffer) strlen:
+  Does not handle strings that are not \0-terminated (it could cause a
+  crash if unprotected). 
+		int len = strlen(owner),i;
+/home/rohan/Documents/6238/Project2/src/common.c:122:  [1] (buffer) strlen:
+  Does not handle strings that are not \0-terminated (it could cause a
+  crash if unprotected). 
+		for(i=0; i<len; i++) if(owner[len - i -1] != info[strlen(info) - i -1]) break;
+/home/rohan/Documents/6238/Project2/src/read_write.c:100:  [1] (buffer) read:
+  Check buffer boundaries if used in a loop. 
+        c2sl=read(fileno(stdin),c2s,BUFSIZZ);
+/home/rohan/Documents/6238/Project2/src/server.c:67:  [1] (buffer) strlen:
+  Does not handle strings that are not \0-terminated (it could cause a
+  crash if unprotected). 
+	EVP_DigestUpdate(mdctx, data, strlen(data));
+/home/rohan/Documents/6238/Project2/src/server.c:87:  [1] (buffer) strlen:
+  Does not handle strings that are not \0-terminated (it could cause a
+  crash if unprotected). 
+	int len = strlen(response)+1;
+/home/rohan/Documents/6238/Project2/src/server.c:135:  [1] (buffer) strlen:
+  Does not handle strings that are not \0-terminated (it could cause a
+  crash if unprotected). 
+			RSA_public_encrypt(strlen((char*)data), data, *result, rsa, RSA_PKCS1_PADDING);
+/home/rohan/Documents/6238/Project2/src/server.c:165:  [1] (buffer) strlen:
+  Does not handle strings that are not \0-terminated (it could cause a
+  crash if unprotected). 
+			char* path = (char*) calloc(1, 50+strlen(ent->d_name));
+/home/rohan/Documents/6238/Project2/src/server.c:176:  [1] (buffer) strlen:
+  Does not handle strings that are not \0-terminated (it could cause a
+  crash if unprotected). 
+			data = &data[strlen(key)];
+/home/rohan/Documents/6238/Project2/src/server.c:180:  [1] (buffer) strlen:
+  Does not handle strings that are not \0-terminated (it could cause a
+  crash if unprotected). 
+			for(i=0; i<strlen(key); i+=2) {
+/home/rohan/Documents/6238/Project2/src/server.c:198:  [1] (buffer) strlen:
+  Does not handle strings that are not \0-terminated (it could cause a
+  crash if unprotected). 
+			fwrite(result_key, strlen((char*)result_key), 1, file);
+/home/rohan/Documents/6238/Project2/src/server.c:199:  [1] (buffer) strlen:
+  Does not handle strings that are not \0-terminated (it could cause a
+  crash if unprotected). 
+			fwrite(data, strlen(data), 1, file);
+/home/rohan/Documents/6238/Project2/src/server.c:222:  [1] (buffer) strlen:
+  Does not handle strings that are not \0-terminated (it could cause a
+  crash if unprotected). 
+	char* path = (char*) calloc(1, 50+strlen(file_name));
+/home/rohan/Documents/6238/Project2/src/server.c:237:  [1] (buffer) strncat:
+  Easily used incorrectly (e.g., incorrectly computing the correct
+  maximum size to add). Consider strlcat or automatically resizing strings. 
+			strncat(argv[2], key, strlen(key)-1);
+/home/rohan/Documents/6238/Project2/src/server.c:237:  [1] (buffer) strlen:
+  Does not handle strings that are not \0-terminated (it could cause a
+  crash if unprotected). 
+			strncat(argv[2], key, strlen(key)-1);
+/home/rohan/Documents/6238/Project2/src/server.c:238:  [1] (buffer) strncat:
+  Easily used incorrectly (e.g., incorrectly computing the correct
+  maximum size to add). Consider strlcat or automatically resizing strings. 
+			strncat(argv[3], data_len, strlen(data_len)-1);
+/home/rohan/Documents/6238/Project2/src/server.c:238:  [1] (buffer) strlen:
+  Does not handle strings that are not \0-terminated (it could cause a
+  crash if unprotected). 
+			strncat(argv[3], data_len, strlen(data_len)-1);
+/home/rohan/Documents/6238/Project2/src/server.c:274:  [1] (buffer) strlen:
+  Does not handle strings that are not \0-terminated (it could cause a
+  crash if unprotected). 
+	char* path = (char*) calloc(1, 50+strlen(file_name));
+/home/rohan/Documents/6238/Project2/src/server.c:284:  [1] (buffer) strlen:
+  Does not handle strings that are not \0-terminated (it could cause a
+  crash if unprotected). 
+			fwrite(key, strlen(key), 1, file);
+/home/rohan/Documents/6238/Project2/src/server.c:286:  [1] (buffer) strlen:
+  Does not handle strings that are not \0-terminated (it could cause a
+  crash if unprotected). 
+			fwrite(data_len, strlen(data_len), 1, file);
+/home/rohan/Documents/6238/Project2/src/server.c:289:  [1] (buffer) strlen:
+  Does not handle strings that are not \0-terminated (it could cause a
+  crash if unprotected). 
+		fwrite(user, strlen(user), 1, file);
+/home/rohan/Documents/6238/Project2/src/server.c:290:  [1] (buffer) strlen:
+  Does not handle strings that are not \0-terminated (it could cause a
+  crash if unprotected). 
+		fwrite(permission, strlen(permission), 1, file);
+/home/rohan/Documents/6238/Project2/src/server.c:323:  [1] (buffer) strcat:
+  Does not check for buffer overflows when concatenating to destination.
+  Consider using strncat or strlcat (warning, strncat is easily misused).
+  Risk is low because the source is a constant character.
+			strcat(permission, "\n");
+/home/rohan/Documents/6238/Project2/src/server.c:344:  [1] (buffer) strlen:
+  Does not handle strings that are not \0-terminated (it could cause a
+  crash if unprotected). 
+	char* file_name = (char*) calloc(1, strlen(&buf[4]));
+/home/rohan/Documents/6238/Project2/src/server.c:347:  [1] (buffer) strncat:
+  Easily used incorrectly (e.g., incorrectly computing the correct
+  maximum size to add). Consider strlcat or automatically resizing strings. 
+	strncat(file_name, &buf[4], strlen(&buf[4])-1);
+/home/rohan/Documents/6238/Project2/src/server.c:347:  [1] (buffer) strlen:
+  Does not handle strings that are not \0-terminated (it could cause a
+  crash if unprotected). 
+	strncat(file_name, &buf[4], strlen(&buf[4])-1);
+/home/rohan/Documents/6238/Project2/src/server.c:360:  [1] (buffer) strlen:
+  Does not handle strings that are not \0-terminated (it could cause a
+  crash if unprotected). 
+		char* path = (char*) calloc(1, 50+strlen(file_name));
+/home/rohan/Documents/6238/Project2/src/server.c:362:  [1] (buffer) strncat:
+  Easily used incorrectly (e.g., incorrectly computing the correct
+  maximum size to add). Consider strlcat or automatically resizing strings. 
+		strncat(path, file_name, strlen(file_name));
+/home/rohan/Documents/6238/Project2/src/server.c:362:  [1] (buffer) strlen:
+  Does not handle strings that are not \0-terminated (it could cause a
+  crash if unprotected). 
+		strncat(path, file_name, strlen(file_name));
+/home/rohan/Documents/6238/Project2/src/server.c:375:  [1] (buffer) strlen:
+  Does not handle strings that are not \0-terminated (it could cause a
+  crash if unprotected). 
+			for(i=0; i<strlen(key); i+=2) {
+/home/rohan/Documents/6238/Project2/src/server.c:406:  [1] (buffer) strlen:
+  Does not handle strings that are not \0-terminated (it could cause a
+  crash if unprotected). 
+	while(i<strlen(&buf[4])) {
+/home/rohan/Documents/6238/Project2/src/server.c:410:  [1] (buffer) strlen:
+  Does not handle strings that are not \0-terminated (it could cause a
+  crash if unprotected). 
+	char* file_name = (char*) calloc(1, strlen(&buf[4+slash]));
+/home/rohan/Documents/6238/Project2/src/server.c:411:  [1] (buffer) strncat:
+  Easily used incorrectly (e.g., incorrectly computing the correct
+  maximum size to add). Consider strlcat or automatically resizing strings. 
+	strncat(file_name, &buf[4+slash], strlen(&buf[4+slash])-1);
+/home/rohan/Documents/6238/Project2/src/server.c:411:  [1] (buffer) strlen:
+  Does not handle strings that are not \0-terminated (it could cause a
+  crash if unprotected). 
+	strncat(file_name, &buf[4+slash], strlen(&buf[4+slash])-1);
+/home/rohan/Documents/6238/Project2/src/server.c:427:  [1] (buffer) strlen:
+  Does not handle strings that are not \0-terminated (it could cause a
+  crash if unprotected). 
+		char* path = (char*) calloc(1, 50+strlen(buf));
+/home/rohan/Documents/6238/Project2/src/server.c:440:  [1] (buffer) strlen:
+  Does not handle strings that are not \0-terminated (it could cause a
+  crash if unprotected). 
+					char* temp = (char*)calloc(1,strlen(response)+1);
+/home/rohan/Documents/6238/Project2/src/server.c:443:  [1] (buffer) strlen:
+  Does not handle strings that are not \0-terminated (it could cause a
+  crash if unprotected). 
+					response = (char*)calloc(1,strlen(temp)+52);
+/home/rohan/Documents/6238/Project2/src/server.c:490:  [1] (buffer) strlen:
+  Does not handle strings that are not \0-terminated (it could cause a
+  crash if unprotected). 
+    int request_len=strlen(output);
+/home/rohan/Documents/6238/Project2/src/wclient.c:73:  [1] (buffer) strlen:
+  Does not handle strings that are not \0-terminated (it could cause a
+  crash if unprotected). 
+				if(strlen(command)<7){
+/home/rohan/Documents/6238/Project2/src/wclient.c:78:  [1] (buffer) strlen:
+  Does not handle strings that are not \0-terminated (it could cause a
+  crash if unprotected). 
+					file_name = (char*) calloc(1,strlen(&command[4]));
+/home/rohan/Documents/6238/Project2/src/wclient.c:79:  [1] (buffer) strncat:
+  Easily used incorrectly (e.g., incorrectly computing the correct
+  maximum size to add). Consider strlcat or automatically resizing strings. 
+					strncat(file_name, &command[4], strlen(&command[4])-1);
+/home/rohan/Documents/6238/Project2/src/wclient.c:79:  [1] (buffer) strlen:
+  Does not handle strings that are not \0-terminated (it could cause a
+  crash if unprotected). 
+					strncat(file_name, &command[4], strlen(&command[4])-1);
+/home/rohan/Documents/6238/Project2/src/wclient.c:110:  [1] (buffer) strlen:
+  Does not handle strings that are not \0-terminated (it could cause a
+  crash if unprotected). 
+				if(strlen(command)<7){
+/home/rohan/Documents/6238/Project2/src/wclient.c:115:  [1] (buffer) strlen:
+  Does not handle strings that are not \0-terminated (it could cause a
+  crash if unprotected). 
+					file_name = (char*) calloc(1,strlen(&command[4])+10);
+/home/rohan/Documents/6238/Project2/src/wclient.c:117:  [1] (buffer) strncat:
+  Easily used incorrectly (e.g., incorrectly computing the correct
+  maximum size to add). Consider strlcat or automatically resizing strings. 
+					strncat(file_name, &command[4], strlen(&command[4])-1);
+/home/rohan/Documents/6238/Project2/src/wclient.c:117:  [1] (buffer) strlen:
+  Does not handle strings that are not \0-terminated (it could cause a
+  crash if unprotected). 
+					strncat(file_name, &command[4], strlen(&command[4])-1);
+/home/rohan/Documents/6238/Project2/src/wclient.c:124:  [1] (buffer) strlen:
+  Does not handle strings that are not \0-terminated (it could cause a
+  crash if unprotected). 
+					fwrite(response, strlen(response), 1, file);
+/home/rohan/Documents/6238/Project2/src/wserver.c:18:  [1] (buffer) strlen:
+  Does not handle strings that are not \0-terminated (it could cause a
+  crash if unprotected). 
+			OLDPASS = (char*) calloc(1, strlen(PASSWORD)+1);
+
+Hits = 129
+Lines analyzed = 1444 in 0.56 seconds (22284 lines/second)
+Physical Source Lines of Code (SLOC) = 1214
+Hits@level = [0]   0 [1]  54 [2]  43 [3]   0 [4]  32 [5]   0
+Hits@level+ = [0+] 129 [1+] 129 [2+]  75 [3+]  32 [4+]  32 [5+]   0
+Hits/KSLOC@level+ = [0+] 106.26 [1+] 106.26 [2+] 61.7792 [3+] 26.3591 [4+] 26.3591 [5+]   0
+Minimum risk level = 1
+Not every hit is necessarily a security vulnerability.
+There may be other security vulnerabilities; review your code!

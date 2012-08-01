@@ -1,0 +1,23 @@
+START
+
+PUT filename
+
+GET filename
+
+DELEGATE filename username time_in_seconds
+
+DELEGATE* filename username time_in_seconds
+
+END
+
+
+Permissions: 
+0 All Denied
+1 Read
+2 Write
+3 Read+Write
+7 Read+Write+Delegate
+
+
+
+
